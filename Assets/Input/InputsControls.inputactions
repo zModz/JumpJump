@@ -1,0 +1,79 @@
+{
+    "name": "InputsControls",
+    "maps": [
+        {
+            "name": "MovePlayer",
+            "id": "cb2ccbff-e6c2-4d89-80a1-45d663991d37",
+            "actions": [
+                {
+                    "name": "TouchControls",
+                    "type": "Value",
+                    "id": "45999c4c-cbd0-4674-8a79-40124cb0c3de",
+                    "expectedControlType": "Touch",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Giroscope",
+                    "type": "Value",
+                    "id": "74f4702e-c03a-4934-b0e3-97f1f1a42448",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d22137ab-b9e0-4b2f-925b-6448a3d18b94",
+                    "path": "<Touchscreen>/primaryTouch",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TouchControls",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "85f523c2-f656-4bd9-880b-08a2d714e54b",
+                    "path": "<Sensor>",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Giroscope",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "dde8cf60-0ba3-4d99-91a1-31e1267b2346",
+            "actions": [
+                {
+                    "name": "Touch",
+                    "type": "Value",
+                    "id": "44fc7cbb-d9e9-4d56-857c-df2310ce658c",
+                    "expectedControlType": "Touch",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "cc33bb3b-a6d9-45d7-891a-6651615da9b5",
+                    "path": "<Touchscreen>/primaryTouch",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Touch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
