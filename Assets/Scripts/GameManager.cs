@@ -57,17 +57,35 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        spawnPlatforms();
     }
 
     // Update is called once per frame
     void Update()
     {
-        spawnPlatforms(); // Platform spawning logic
+        
     }
 
-
+    // Platform spawning logic
     void spawnPlatforms(){
-        
+        Vector2 NextPlat;
+        Vector2 PrevPlat;
+        Vector2 Min, Max;
+        float _xAxis;
+        float _yAxis;
+
+        for (int i = 0; i < regularGO.Length; i++) {
+            Min = new Vector2(PrevPlat.x + 1, PrevPlat.y + 1);
+            Max = new Vector2(PrevPlat.x - 1, PrevPlat.y + 2);
+
+            _xAxis = Random.Range(Min.x, Max.x);
+            _yAxis = Random.Range(Min.y, Max.y);
+
+            NextPlat = new Vector2(_xAxis, _yAxis);
+
+            Instantiate(regularGO[i], NextPlat, Quaternion.identity);
+
+            PrevPlat = NextPlat;
+        }
     }
 }
