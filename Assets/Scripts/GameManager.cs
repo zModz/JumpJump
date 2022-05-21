@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     public int jumpedPlatforms;
 
     [Header("Platforms")]
+    public Transform gameScene;
     public GameObject[] regularGO;
     public GameObject[] bonusGO;
     [SerializeField]
@@ -53,39 +54,40 @@ public class GameManager : MonoBehaviour
     [Range(0,1)]
     [Tooltip("0 = Touch, 1 = Tilt")] public int gameplayMethod;
     public GameObject[] touchZones = new GameObject[2];
+    Vector2 PrevPlat = new Vector2(0, -1);
 
     // Start is called before the first frame update
     void Start()
     {
-        spawnPlatforms();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+    }
+
+    public void btnSpawn(){
+        spawnPlatforms();
     }
 
     // Platform spawning logic
     void spawnPlatforms(){
         Vector2 NextPlat;
-        Vector2 PrevPlat;
         Vector2 Min, Max;
+        
         float _xAxis;
         float _yAxis;
 
         for (int i = 0; i < regularGO.Length; i++) {
-            Min = new Vector2(PrevPlat.x + 1, PrevPlat.y + 1);
+            Debug.Log("1: " + PrevPlat);
+            Min = new Vector2(PrevPlat.x + 1, PrevPlat.y + 2);
             Max = new Vector2(PrevPlat.x - 1, PrevPlat.y + 2);
-
             _xAxis = Random.Range(Min.x, Max.x);
             _yAxis = Random.Range(Min.y, Max.y);
-
             NextPlat = new Vector2(_xAxis, _yAxis);
-
-            Instantiate(regularGO[i], NextPlat, Quaternion.identity);
-
-            PrevPlat = NextPlat;
+            Instantiate(regularGO[i], NextPlat, Quaternion.identity, gameScene);
+            PrevPlat = new Vector2(NextPlat.x, NextPlat.y);
+            Debug.Log("2: " + PrevPlat);
         }
     }
 }

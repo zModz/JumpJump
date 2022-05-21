@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     public GameManager gm; 
+    public float jumpForce;
     BoxCollider2D coll;
     Rigidbody2D rb;
 
@@ -29,7 +30,7 @@ public class PlayerScript : MonoBehaviour
             Debug.Log("Player Detected");
             if(other.gameObject.tag == "Platform"){
                 Debug.Log("Platform Detected");
-                rb.AddForce(transform.up * 5, ForceMode2D.Impulse);
+                rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
                 gm.jumpedPlatforms++;
                 gm.Points += 10;
                 //Destroy(other.gameObject);
