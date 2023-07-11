@@ -64,6 +64,13 @@ public class PlayerScript : MonoBehaviour
                 gm.jumpedPlatforms++;
                 gm.Points += 10;
             }
+
+            //if (colls[0].gameObject.tag == "Gold Platform")
+            //{
+            //    Debug.Log("Platform Detected");
+            //    gm.jumpedPlatforms++;
+            //    gm.Points += 50;
+            //}
         }
     }
 

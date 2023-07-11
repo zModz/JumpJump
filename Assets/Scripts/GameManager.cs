@@ -33,16 +33,16 @@ public class GameManager : MonoBehaviour
     public int Distance;
     public int jumpedPlatforms;
 
+    public int platRand;
+    public int bonusRand;
+    public int loop = 0;
+
     [Header("Platforms")]
     public Transform gameScene;
     public GameObject[] regularGO;
     public GameObject bonusGO;
     public float OffsetX;
     public float OffsetY;
-    [SerializeField]
-    int regularMulti;
-    [SerializeField]
-    int bonusMulti;
     [Header("Obstacles")]
     public GameObject[] obsGO;
     [Header("PowerUps")]
@@ -63,9 +63,7 @@ public class GameManager : MonoBehaviour
 
     // Platform spawning logic
     void spawnPlatforms(){
-        int platRand;
-        int bonusRand;
-        int loop = 0;
+        
 
         Vector2 NextPlat;
         Vector2 Min, Max;
@@ -78,20 +76,23 @@ public class GameManager : MonoBehaviour
         Max = new Vector2(PrevPlat.x - OffsetX, PrevPlat.y + OffsetY);
 
         platRand = Random.Range(0, regularGO.Length);
-        bonusRand = Random.Range(0, 1000);
+        bonusRand = Random.Range(0, 10000);
         _xAxis = Random.Range(Min.x, Max.x);
         _yAxis = Random.Range(Min.y, Max.y);
 
         NextPlat = new Vector2(_xAxis, _yAxis);
+        Debug.Log(NextPlat);
 
-        if(loop > 1){
+        if(loop >= 0){
             if (bonusRand == 0){
                 Instantiate(bonusGO, NextPlat, Quaternion.identity, gameScene);
             }
+            else
+            {
+                Instantiate(regularGO[platRand], NextPlat, Quaternion.identity, gameScene);
+            }
         }
         
-        Instantiate(regularGO[platRand], NextPlat, Quaternion.identity, gameScene);
-
         PrevPlat = new Vector2(NextPlat.x, NextPlat.y);
         loop++;
     }
